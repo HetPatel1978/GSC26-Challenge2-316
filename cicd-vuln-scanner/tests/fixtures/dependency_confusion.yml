@@ -1,0 +1,23 @@
+name: Dependency Confusion Example
+on: push
+jobs:
+  pip-risky:
+    runs-on: ubuntu-latest
+    steps:
+      - run: pip install internal-pkg --extra-index-url https://pypi.internal.example.com/simple
+  npm-risky:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          npm config set @myorg:registry=https://npm.internal.example.com
+          npm install internal-widget
+  npm-safe:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          npm config set @myorg:registry=https://npm.internal.example.com
+          npm install @myorg/internal-widget
+  pip-safe:
+    runs-on: ubuntu-latest
+    steps:
+      - run: pip install --index-url https://pypi.internal.example.com/simple internal-pkg

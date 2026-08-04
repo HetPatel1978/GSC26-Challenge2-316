@@ -1,0 +1,28 @@
+name: Reusable Deploy
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+    secrets:
+      deploy-token:
+        required: true
+    outputs:
+      deployment-url:
+        description: "URL of the deployment"
+        value: ${{ jobs.deploy.outputs.url }}
+jobs:
+  setup:
+    uses: org/repo/.github/workflows/shared-setup.yml@v1
+    with:
+      environment: ${{ inputs.environment }}
+    secrets: inherit
+  deploy:
+    needs: setup
+    runs-on: ubuntu-latest
+    outputs:
+      url: ${{ steps.deploy.outputs.url }}
+    steps:
+      - id: deploy
+        run: echo "url=https://example.com" >> "$GITHUB_OUTPUT"

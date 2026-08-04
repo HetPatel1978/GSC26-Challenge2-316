@@ -1,0 +1,8 @@
+pyyaml>=6.0
+ruamel.yaml>=0.18
+anthropic>=0.40
+pytest>=8.0
+pandas>=2.2
+matplotlib>=3.9
+requests>=2.32
+PyGithub>=2.4

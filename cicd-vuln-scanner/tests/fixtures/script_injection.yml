@@ -1,0 +1,19 @@
+name: Script Injection Example
+on:
+  issue_comment:
+    types: [created]
+jobs:
+  unsafe:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Comment was ${{ github.event.comment.body }}"
+  safe-env-indirection:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          COMMENT_BODY: ${{ github.event.comment.body }}
+        run: echo "Comment was $COMMENT_BODY"
+  safe-non-tainted:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Repo is ${{ github.repository }}"

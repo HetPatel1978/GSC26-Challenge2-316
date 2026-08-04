@@ -1,0 +1,22 @@
+name: Permissions Example
+on: push
+permissions:
+  contents: read
+  pull-requests: write
+jobs:
+  scoped:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - run: echo "scoped job"
+  inherits:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "inherits top-level permissions"
+  no-perms-block:
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - run: echo "explicitly no permissions"
