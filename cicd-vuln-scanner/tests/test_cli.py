@@ -49,9 +49,13 @@ def test_format_report_groups_by_file_and_sorts_by_severity():
     wf = FIXTURES / "pull_request_target.yml"
     findings = scan_files([wf])
     report = format_report(findings)
-    assert "1 finding(s): 1 critical" in report
+    # This fixture's `actions/checkout@v4` also trips the unpinned-action
+    # detector now that all 8 detectors run, alongside the critical
+    # pull-request-target-checkout finding it's here to exercise.
+    assert "2 finding(s): 1 medium, 1 critical" in report
     assert "== " in report
     assert "pull-request-target-checkout" in report
+    assert "unpinned-action" in report
     assert "fix:" in report
 
 
@@ -91,7 +95,9 @@ def test_main_writes_sarif_file(tmp_path, capsys):
     assert code == 1
     data = json.loads(sarif_path.read_text(encoding="utf-8"))
     assert data["version"] == "2.1.0"
-    assert len(data["runs"][0]["results"]) == 1
+    # critical pull-request-target-checkout + medium unpinned-action (see
+    # test_format_report_groups_by_file_and_sorts_by_severity above).
+    assert len(data["runs"][0]["results"]) == 2
     # SARIF URIs are always forward-slash, even on Windows.
     assert "\\" not in data["runs"][0]["results"][0]["locations"][0]["physicalLocation"]["artifactLocation"]["uri"]
 

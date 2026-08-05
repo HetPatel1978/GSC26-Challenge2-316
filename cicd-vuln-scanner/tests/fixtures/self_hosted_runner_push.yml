@@ -1,0 +1,7 @@
+name: Self-hosted runner on push (not fork-triggerable)
+on: push
+jobs:
+  self-hosted-push:
+    runs-on: self-hosted
+    steps:
+      - run: echo build

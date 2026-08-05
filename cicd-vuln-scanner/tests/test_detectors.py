@@ -10,7 +10,9 @@ from scanner.detectors.cache_poisoning import CachePoisoningDetector
 from scanner.detectors.dependency_confusion import DependencyConfusionDetector
 from scanner.detectors.injection import ScriptInjectionDetector
 from scanner.detectors.permissions import ExcessPermissionsDetector
+from scanner.detectors.pinning import UnpinnedActionDetector
 from scanner.detectors.pull_request_target import PullRequestTargetDetector
+from scanner.detectors.runner import SelfHostedRunnerDetector
 from scanner.detectors.secrets import SecretLeakageDetector
 from scanner.parser import parse_workflow_file
 
@@ -222,3 +224,86 @@ def test_cache_poisoning_flags_predictable_key():
 def test_cache_poisoning_ignores_non_pull_request_trigger():
     wf = _load("minimal.yml")  # triggered by push
     assert CachePoisoningDetector().detect(wf) == []
+
+
+# --- unpinned actions -------------------------------------------------------
+
+
+def test_unpinned_action_flags_mutable_tag():
+    wf = _load("pinning.yml")
+    findings = UnpinnedActionDetector().detect(wf)
+    finding = _by_context(findings, "jobs.unpinned-tag.steps[0].uses")
+    assert finding.rule_id == "unpinned-action"
+    assert finding.severity.value == "medium"
+    assert "actions/checkout@v4" in finding.message
+
+
+def test_unpinned_action_flags_mutable_branch_ref():
+    wf = _load("pinning.yml")
+    findings = UnpinnedActionDetector().detect(wf)
+    finding = _by_context(findings, "jobs.unpinned-branch.steps[0].uses")
+    assert finding.rule_id == "unpinned-action"
+
+
+def test_unpinned_action_does_not_flag_sha_pins():
+    wf = _load("pinning.yml")
+    findings = UnpinnedActionDetector().detect(wf)
+    contexts = {f.context for f in findings}
+    assert "jobs.pinned-full-sha.steps[0].uses" not in contexts
+    assert "jobs.pinned-short-sha.steps[0].uses" not in contexts
+
+
+def test_unpinned_action_ignores_local_and_docker_actions():
+    wf = _load("pinning.yml")
+    findings = UnpinnedActionDetector().detect(wf)
+    contexts = {f.context for f in findings}
+    assert "jobs.local-action-safe.steps[0].uses" not in contexts
+    assert "jobs.docker-action-safe.steps[0].uses" not in contexts
+
+
+def test_unpinned_action_clean_fixture_has_no_findings():
+    wf = _load("minimal.yml")
+    assert UnpinnedActionDetector().detect(wf) == []
+
+
+# --- self-hosted runner misuse ----------------------------------------------
+
+
+def test_self_hosted_runner_flags_string_form_on_pull_request_target():
+    wf = _load("self_hosted_runner.yml")
+    findings = SelfHostedRunnerDetector().detect(wf)
+    finding = _by_context(findings, "jobs.self-hosted-string")
+    assert finding.rule_id == "self-hosted-runner-fork-trigger"
+    assert finding.severity.value == "high"
+
+
+def test_self_hosted_runner_flags_list_form_on_pull_request_target():
+    wf = _load("self_hosted_runner.yml")
+    findings = SelfHostedRunnerDetector().detect(wf)
+    finding = _by_context(findings, "jobs.self-hosted-list")
+    assert finding.severity.value == "high"
+
+
+def test_self_hosted_runner_ignores_github_hosted_job():
+    wf = _load("self_hosted_runner.yml")
+    findings = SelfHostedRunnerDetector().detect(wf)
+    contexts = {f.context for f in findings}
+    assert "jobs.github-hosted-safe" not in contexts
+
+
+def test_self_hosted_runner_escalates_to_critical_on_pull_request():
+    wf = _load("self_hosted_runner_pull_request.yml")
+    findings = SelfHostedRunnerDetector().detect(wf)
+    finding = _by_context(findings, "jobs.self-hosted-fork")
+    assert finding.rule_id == "self-hosted-runner-fork-trigger"
+    assert finding.severity.value == "critical"
+
+
+def test_self_hosted_runner_ignores_non_fork_trigger():
+    wf = _load("self_hosted_runner_push.yml")
+    assert SelfHostedRunnerDetector().detect(wf) == []
+
+
+def test_self_hosted_runner_ignores_prt_workflow_with_no_self_hosted_job():
+    wf = _load("pull_request_target.yml")  # runs-on: ubuntu-latest
+    assert SelfHostedRunnerDetector().detect(wf) == []

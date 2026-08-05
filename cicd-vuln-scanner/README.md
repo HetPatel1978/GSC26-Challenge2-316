@@ -23,17 +23,16 @@ a repository or its CI infrastructure from an untrusted pull request:
 4. **Secret/token leakage** — hardcoded credentials, secrets echoed to
    logs, secrets embedded in URLs.
 5. **Unpinned third-party actions** — `uses: org/action@v4` (mutable tag)
-   instead of a pinned commit SHA. *(not yet implemented — see Known
-   limitations)*
+   instead of a pinned commit SHA.
 6. **Dependency confusion** — install patterns (`pip --extra-index-url`,
    unscoped private package names) that let a public-registry package
    masquerade as an internal one.
 7. **Cache poisoning** — writing to the Actions cache from a
    fork-triggered `pull_request` job, which a later privileged base-branch
    run can then restore and trust.
-8. **Self-hosted runner misuse** — public-repo workflows that let forked
-   PRs execute on persistent self-hosted infrastructure. *(not yet
-   implemented — see Known limitations)*
+8. **Self-hosted runner misuse** — `runs-on: self-hosted` in a workflow
+   triggered by `pull_request` or `pull_request_target`, letting forked
+   PRs execute on persistent self-hosted infrastructure.
 
 This scanner parses workflow YAML into a structured IR, runs a rule-based
 detector per category (backed by a small taint-tracking engine for the
@@ -60,8 +59,10 @@ scanner/detectors/
   pull_request_target.py     #2 pull_request_target misuse
   permissions.py              #3 excess GITHUB_TOKEN permissions
   secrets.py                  #4 secret/token leakage
+  pinning.py                  #5 unpinned third-party actions
   dependency_confusion.py     #6 dependency confusion
   cache_poisoning.py          #7 cache poisoning
+  runner.py                   #8 self-hosted runner misuse
 ```
 
 Each detector is a pure function of the IR (`Workflow -> list[Finding]`),
@@ -105,7 +106,7 @@ at/above `--fail-on` (default: `high`), `2` bad arguments / no files found.
 ```
 $ python -m scanner.cli tests/fixtures/pull_request_target.yml tests/fixtures/script_injection.yml --fail-on none
 
-3 finding(s): 1 medium, 2 critical
+4 finding(s): 2 medium, 2 critical
 
 == tests/fixtures/pull_request_target.yml ==
   [CRITICAL] pull-request-target-checkout @ line 12
@@ -114,6 +115,12 @@ $ python -m scanner.cli tests/fixtures/pull_request_target.yml tests/fixtures/sc
     executes that checkout runs attacker-controlled code with privileged access.
     context: jobs.build.steps[0].with.ref
     fix: Stop checking out the fork PR's head content in a privileged trigger.
+  [MEDIUM] unpinned-action @ line 12
+    `actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that
+    tag or branch can repoint it to different content at any time, and the next run of this
+    workflow executes whatever it now resolves to.
+    context: jobs.build.steps[0].uses
+    fix: Pin the action to a full commit SHA instead of a mutable tag.
 
 == tests/fixtures/script_injection.yml ==
   [CRITICAL] script-injection @ line 9
@@ -139,16 +146,12 @@ document (`scanner.findings.SARIFExporter`) suitable for upload via
 pytest tests/ -v
 ```
 
-60 tests across the IR, parser, findings/SARIF export, taint engine, all
-six detectors (true-positive and true-negative cases per category, plus
+71 tests across the IR, parser, findings/SARIF export, taint engine, all
+eight detectors (true-positive and true-negative cases per category, plus
 permission-inheritance edge cases), the patcher, and the CLI.
 
 ## Known limitations
 
-- **Unpinned actions (`pinning.py`) and self-hosted runner misuse
-  (`runner.py`)** are scaffolded (`scanner/detectors/`) but not
-  implemented — out of scope for this submission window. They're excluded
-  from `scanner.detectors.DEFAULT_DETECTORS` accordingly.
 - **`patcher/` (LLM-assisted patch generation + verification), `eval/`
   (precision/recall against a labeled corpus), `collect/` (corpus
   collection), and `baselines/` (zizmor/semgrep comparison)** are earlier
@@ -161,3 +164,9 @@ permission-inheritance edge cases), the patcher, and the CLI.
   full data-flow analysis) — expect some false negatives on obfuscated or
   unusually structured workflows, by design favoring low false positives
   over exhaustive recall.
+- **Self-hosted runner misuse (`runner.py`)** flags any `pull_request` /
+  `pull_request_target`-triggered job on `runs-on: self-hosted`; the
+  scanner has no way to know from the workflow file alone whether the
+  repository is actually public (where forked PRs are the real attacker
+  surface) or private (where the risk is much lower), so it always treats
+  the trigger as fork-reachable.

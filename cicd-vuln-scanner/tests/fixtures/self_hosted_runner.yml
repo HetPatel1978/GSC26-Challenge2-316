@@ -1,0 +1,17 @@
+name: Self-hosted runner on pull_request_target
+on:
+  pull_request_target:
+    branches: [main]
+jobs:
+  self-hosted-string:
+    runs-on: self-hosted
+    steps:
+      - run: echo build
+  self-hosted-list:
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - run: echo build
+  github-hosted-safe:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo build

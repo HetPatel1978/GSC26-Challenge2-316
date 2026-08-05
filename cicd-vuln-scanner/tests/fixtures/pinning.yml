@@ -1,0 +1,28 @@
+name: Action pinning example
+on: push
+jobs:
+  unpinned-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo build
+  unpinned-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: some-org/some-action@main
+  pinned-full-sha:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
+  pinned-short-sha:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@abc1234def
+  local-action-safe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/actions/local-action
+  docker-action-safe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: docker://alpine:3.18

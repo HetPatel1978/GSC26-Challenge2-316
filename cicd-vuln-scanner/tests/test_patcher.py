@@ -13,10 +13,12 @@ _TEMPLATED_RULE_IDS = [
     "secret-echoed-to-log",
     "secret-inline-interpolation",
     "secret-in-url",
+    "unpinned-action",
     "pip-extra-index-url",
     "unscoped-private-package",
     "cache-poisoning",
     "predictable-cache-key",
+    "self-hosted-runner-fork-trigger",
 ]
 
 

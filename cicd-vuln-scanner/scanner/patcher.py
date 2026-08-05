@@ -200,6 +200,36 @@ def _predictable_cache_key(finding: Finding) -> PatchSuggestion:
     )
 
 
+def _unpinned_action(finding: Finding) -> PatchSuggestion:
+    return PatchSuggestion(
+        finding=finding,
+        summary="Pin the action to a full commit SHA instead of a mutable tag.",
+        before="- uses: actions/checkout@v4",
+        after="- uses: actions/checkout@a94a8fe5ccb19ba61c4c0873d391e987982fbbd3 # v4",
+        explanation=(
+            "A commit SHA always resolves to the exact content that was reviewed; a tag or "
+            "branch name can be repointed by the action's maintainer -- or by whoever "
+            "compromises their account or publishing pipeline -- to different content at any "
+            "time, and the next run silently executes whatever it now points to."
+        ),
+    )
+
+
+def _self_hosted_runner_fork_trigger(finding: Finding) -> PatchSuggestion:
+    return PatchSuggestion(
+        finding=finding,
+        summary="Move the job off self-hosted infrastructure, or drop the fork-triggerable event.",
+        before="on: pull_request\njobs:\n  build:\n    runs-on: self-hosted",
+        after="on: pull_request\njobs:\n  build:\n    runs-on: ubuntu-latest",
+        explanation=(
+            "A GitHub-hosted runner is a fresh, ephemeral VM torn down after the job, so a "
+            "malicious PR gains nothing persistent by running on one. If self-hosted "
+            "infrastructure is required, restrict the job to a non-fork-triggerable event (e.g. "
+            "`push` to protected branches) or gate it behind an explicit maintainer approval."
+        ),
+    )
+
+
 _TEMPLATES = {
     "script-injection": _script_injection,
     "pull-request-target-checkout": _pull_request_target_checkout,
@@ -208,10 +238,12 @@ _TEMPLATES = {
     "secret-echoed-to-log": _secret_echoed_to_log,
     "secret-inline-interpolation": _secret_echoed_to_log,
     "secret-in-url": _secret_in_url,
+    "unpinned-action": _unpinned_action,
     "pip-extra-index-url": _pip_extra_index_url,
     "unscoped-private-package": _unscoped_private_package,
     "cache-poisoning": _cache_poisoning,
     "predictable-cache-key": _predictable_cache_key,
+    "self-hosted-runner-fork-trigger": _self_hosted_runner_fork_trigger,
 }
 
 

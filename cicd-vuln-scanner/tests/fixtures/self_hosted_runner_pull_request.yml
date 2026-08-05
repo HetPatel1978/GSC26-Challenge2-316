@@ -1,0 +1,7 @@
+name: Self-hosted runner on pull_request
+on: pull_request
+jobs:
+  self-hosted-fork:
+    runs-on: self-hosted
+    steps:
+      - run: echo build
