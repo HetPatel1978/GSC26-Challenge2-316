@@ -40,9 +40,13 @@ injection case), and reports findings as both a human-readable report and
 SARIF 2.1.0 (the format GitHub code scanning and most CI security
 dashboards consume), with a suggested before/after patch for each finding.
 
-Full detection logic and false-positive reasoning per category lives in
+Full detection logic, taint sources/sinks, vulnerable/safe examples,
+false-positive reasoning, and a real CVE or incident per category lives in
 [`taxonomy.md`](taxonomy.md) and the docstring at the top of each detector
-module.
+module. The scanner has also been run against ten popular public
+repositories (not just hand-written fixtures) — see [Real-world
+results](#real-world-results) below and
+[`docs/REAL_WORLD_FINDINGS.md`](docs/REAL_WORLD_FINDINGS.md).
 
 ## Architecture
 
@@ -63,6 +67,11 @@ scanner/detectors/
   dependency_confusion.py     #6 dependency confusion
   cache_poisoning.py          #7 cache poisoning
   runner.py                   #8 self-hosted runner misuse
+eval/metrics.py              Precision/recall/F1 harness against tests/fixtures/eval/
+baselines/run_semgrep.py     Same harness run against semgrep's p/github-actions ruleset
+scripts/scan_real_repos.py   Scans 10 popular public repos, writes results/real_world_scan/
+docs/REAL_WORLD_FINDINGS.md  Deep dives on the interesting real findings above
+results/                     Generated output: SARIF, eval report, semgrep comparison
 ```
 
 Each detector is a pure function of the IR (`Workflow -> list[Finding]`),
@@ -75,11 +84,14 @@ against fixtures in `tests/fixtures/`.
 pip install -r requirements.txt
 ```
 
-The scanner itself only needs `pyyaml` and the standard library. The rest
-of `requirements.txt` (anthropic, pandas, matplotlib, PyGithub, ...)
-belongs to the LLM-assisted patching and corpus-evaluation tooling under
-`patcher/`, `collect/`, and `eval/`, which is separate, not-yet-implemented
-scaffolding — see Known limitations.
+The scanner itself only needs `pyyaml` and the standard library.
+`eval/metrics.py` and `scripts/scan_real_repos.py` need nothing beyond
+this file either. The rest of `requirements.txt` (anthropic, pandas,
+matplotlib, PyGithub, ...) belongs to the LLM-assisted patching and
+corpus-collection tooling under `patcher/` and `collect/`, which remain
+not-yet-implemented scaffolding — see Known limitations.
+`baselines/run_semgrep.py` needs `semgrep`, deliberately installed
+separately (see that script's docstring for why).
 
 ## Running
 
@@ -140,25 +152,120 @@ $ python -m scanner.cli tests/fixtures/pull_request_target.yml tests/fixtures/sc
 document (`scanner.findings.SARIFExporter`) suitable for upload via
 `github/codeql-action/upload-sarif` or any SARIF-consuming dashboard.
 
+### Real-world demo
+
+The example above uses this project's own test fixtures. Here's the same
+CLI, unmodified, run against `django/django`'s actual, currently-live
+`.github/workflows/benchmark.yml` (fetched straight from GitHub, saved
+locally, nothing edited):
+
+```
+$ python -m scanner.cli django-django-benchmark.yml --fail-on none
+
+3 finding(s): 2 medium, 1 high
+
+== django-django-benchmark.yml ==
+  [HIGH] cache-poisoning @ line 30
+    `actions/cache` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts.
+    context: jobs.Run_benchmarks.steps[3]
+    fix: Don't write cache from fork-triggered pull_request jobs.
+  [MEDIUM] unpinned-action @ line 16
+    `actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to.
+    context: jobs.Run_benchmarks.steps[0].uses
+    fix: Pin the action to a full commit SHA instead of a mutable tag.
+  [MEDIUM] unpinned-action @ line 30
+    `actions/cache@v6` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to.
+    context: jobs.Run_benchmarks.steps[3].uses
+    fix: Pin the action to a full commit SHA instead of a mutable tag.
+```
+
+The full write-up for this file — including why the `if:` label gate and
+the content-hash-free cache key matter, and a real gap this exposed in
+the `predictable-cache-key` sub-rule — is in
+[`docs/REAL_WORLD_FINDINGS.md`](docs/REAL_WORLD_FINDINGS.md#5-djangodjango----cache-poisoning-with-a-maximally-predictable-key).
+
+## Real-world results
+
+`scripts/scan_real_repos.py` shallow/sparse-clones ten popular, actively
+maintained open source repositories and scans every `.github/workflows/`
+file in each with the full detector suite — an external check beyond this
+project's own fixtures.
+
+| Repo | Files | Findings | Critical | High | Medium | Most common |
+|---|---|---|---|---|---|---|
+| tensorflow/tensorflow | 17 | 1 | 0 | 0 | 1 | secret-inline-interpolation |
+| django/django | 21 | 76 | 0 | 13 | 63 | unpinned-action |
+| facebook/react | 22 | 193 | 1 | 21 | 171 | unpinned-action |
+| microsoft/vscode | 16 | 12 | 5 | 3 | 4 | self-hosted-runner-fork-trigger |
+| pytest-dev/pytest | 6 | 0 | 0 | 0 | 0 | -- |
+| pallets/flask | 5 | 2 | 0 | 2 | 0 | cache-poisoning |
+| psf/requests | 8 | 1 | 0 | 1 | 0 | cache-poisoning |
+| numpy/numpy | 23 | 6 | 0 | 6 | 0 | cache-poisoning |
+| apache/airflow | 50 | 2 | 2 | 0 | 0 | secret-echoed-to-log |
+| electron/electron | 50 | 0 | 0 | 0 | 0 | -- |
+
+**293 findings across 218 workflow files in 10 repos** (8 critical, 46
+high, 239 medium). Per-repo SARIF is in
+[`results/real_world_scan/`](results/real_world_scan/); the full
+human-reviewed write-up — exact file/line, whether each finding is
+realistically exploitable as written, and honest notes where a
+correctly-triggered rule turned out to have a real mitigating factor
+(VS Code's ephemeral 1ES runner pools, a GitHub charset restriction that
+neuters one tainted context in React's CI, a `docker login --password-stdin`
+pattern in Airflow's CI that isn't quite what "echoed to log" implies) —
+is in [`docs/REAL_WORLD_FINDINGS.md`](docs/REAL_WORLD_FINDINGS.md). The
+230 `unpinned-action` findings in django and react, and the 46
+`cache-poisoning` findings spread across five repos, are the same
+primitives behind real incidents: [CVE-2025-30066](https://github.com/advisories/ghsa-mrrh-fwg8-r2c3)
+(tj-actions/changed-files) and the [cache-poisoning research that broke
+Angular's CI in March 2024](https://adnanthekhan.com/2024/05/06/the-monsters-in-your-build-cache-github-actions-cache-poisoning/),
+respectively — see `taxonomy.md` for the full incident references.
+
+## Evaluation
+
+Two independent measurements, kept deliberately separate because they
+answer different questions:
+
+- **[`results/eval_report.md`](results/eval_report.md)** (`eval/metrics.py`) —
+  precision/recall/F1 per taxonomy category against 20 hand-labeled
+  fixtures in `tests/fixtures/eval/` (10 vulnerable across all 8
+  categories, 10 clean). Scores 1.00 across the board — this is a
+  conformance check against this project's own spec, not a claim about
+  real-world accuracy; the report says so explicitly and points at
+  real-world results for that.
+- **[`results/semgrep_comparison.md`](results/semgrep_comparison.md)**
+  (`baselines/run_semgrep.py`) — the same 20 fixtures, same methodology,
+  scored against semgrep's public `p/github-actions` ruleset instead.
+  Semgrep has no rule at all for 4 of our 8 categories
+  (`excess_permissions`, `dependency_confusion`, `cache_poisoning`,
+  `self_hosted_runner`) and a `secret_leakage` rule that exists but
+  doesn't match the direct "secret interpolated into `run:`" pattern —
+  0.42 recall vs. this project's 1.00 on the shared fixture set, both at
+  1.00 precision (neither tool false-positives here).
+
 ## Tests
 
 ```bash
 pytest tests/ -v
 ```
 
-71 tests across the IR, parser, findings/SARIF export, taint engine, all
+74 tests across the IR, parser, findings/SARIF export, taint engine, all
 eight detectors (true-positive and true-negative cases per category, plus
-permission-inheritance edge cases), the patcher, and the CLI.
+permission-inheritance edge cases), the patcher, the CLI, and the eval
+harness (a regression guard: fails loudly if a detector change silently
+breaks one of the 20 labeled eval fixtures).
 
 ## Known limitations
 
-- **`patcher/` (LLM-assisted patch generation + verification), `eval/`
-  (precision/recall against a labeled corpus), `collect/` (corpus
-  collection), and `baselines/` (zizmor/semgrep comparison)** are earlier
+- **`patcher/` (LLM-assisted patch generation + verification) and
+  `collect/` (corpus collection for that patcher)** are earlier
   scaffolding for a more ambitious version of this project and remain
   `Not yet implemented` stubs. `scanner/patcher.py` (rule-based patch
-  suggestions per finding) is the patching functionality actually shipped
-  in this submission; it does not depend on any of the above.
+  suggestions per finding, used throughout this README and the CLI) is
+  the patching functionality actually shipped in this submission and does
+  not depend on either. `eval/metrics.py` and `baselines/run_semgrep.py`
+  — the other two items in that original stub list — are now fully
+  implemented; see Evaluation above.
 - All detection is static and rule-/heuristic-based (dependency confusion
   and cache poisoning in particular are pattern-matching heuristics, not
   full data-flow analysis) — expect some false negatives on obfuscated or
