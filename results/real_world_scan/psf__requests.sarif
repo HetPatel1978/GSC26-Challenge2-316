@@ -1,0 +1,44 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "cicd-vuln-scanner",
+          "version": "0.1.0",
+          "informationUri": "https://github.com/placeholder/cicd-vuln-scanner",
+          "rules": [
+            {
+              "id": "cache-poisoning",
+              "shortDescription": {
+                "text": "Cache poisoning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/setup-python` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "psf/requests/.github/workflows/run-tests.yml"
+                },
+                "region": {
+                  "startLine": 26
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

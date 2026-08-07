@@ -1,0 +1,44 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "cicd-vuln-scanner",
+          "version": "0.1.0",
+          "informationUri": "https://github.com/placeholder/cicd-vuln-scanner",
+          "rules": [
+            {
+              "id": "secret-inline-interpolation",
+              "shortDescription": {
+                "text": "Secret inline interpolation"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "secret-inline-interpolation",
+          "level": "warning",
+          "message": {
+            "text": "A secret is interpolated inline into `run:` rather than passed via `env:`, increasing exposure via process listings and log-masking bypasses."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tensorflow/tensorflow/.github/workflows/arm-cd.yml"
+                },
+                "region": {
+                  "startLine": 68
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

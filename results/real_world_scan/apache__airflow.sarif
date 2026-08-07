@@ -1,0 +1,63 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "cicd-vuln-scanner",
+          "version": "0.1.0",
+          "informationUri": "https://github.com/placeholder/cicd-vuln-scanner",
+          "rules": [
+            {
+              "id": "secret-echoed-to-log",
+              "shortDescription": {
+                "text": "Secret echoed to log"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "secret-echoed-to-log",
+          "level": "error",
+          "message": {
+            "text": "A secret is interpolated directly into a command that prints its own output, leaking the secret value to the workflow log."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "apache/airflow/.github/workflows/release_single_dockerhub_image.yml"
+                },
+                "region": {
+                  "startLine": 89
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "secret-echoed-to-log",
+          "level": "error",
+          "message": {
+            "text": "A secret is interpolated directly into a command that prints its own output, leaking the secret value to the workflow log."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "apache/airflow/.github/workflows/release_single_dockerhub_image.yml"
+                },
+                "region": {
+                  "startLine": 183
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

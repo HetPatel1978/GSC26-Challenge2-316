@@ -1,0 +1,1469 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "cicd-vuln-scanner",
+          "version": "0.1.0",
+          "informationUri": "https://github.com/placeholder/cicd-vuln-scanner",
+          "rules": [
+            {
+              "id": "unpinned-action",
+              "shortDescription": {
+                "text": "Unpinned action"
+              }
+            },
+            {
+              "id": "cache-poisoning",
+              "shortDescription": {
+                "text": "Cache poisoning"
+              }
+            },
+            {
+              "id": "excess-permissions",
+              "shortDescription": {
+                "text": "Excess permissions"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/benchmark.yml"
+                },
+                "region": {
+                  "startLine": 16
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v6` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/benchmark.yml"
+                },
+                "region": {
+                  "startLine": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/cache` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/benchmark.yml"
+                },
+                "region": {
+                  "startLine": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/check-migrations.yml"
+                },
+                "region": {
+                  "startLine": 43
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-python@v6` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/check-migrations.yml"
+                },
+                "region": {
+                  "startLine": 48
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/setup-python` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/check-migrations.yml"
+                },
+                "region": {
+                  "startLine": 48
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/check_commit_messages.yml"
+                },
+                "region": {
+                  "startLine": 21
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/check_commit_messages.yml"
+                },
+                "region": {
+                  "startLine": 79
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/check_pr_quality.yml"
+                },
+                "region": {
+                  "startLine": 23
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-python@v6` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/check_pr_quality.yml"
+                },
+                "region": {
+                  "startLine": 31
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/download-artifact@v8` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/coverage_comment.yml"
+                },
+                "region": {
+                  "startLine": 26
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/github-script@v9` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/coverage_comment.yml"
+                },
+                "region": {
+                  "startLine": 33
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/coverage_tests.yml"
+                },
+                "region": {
+                  "startLine": 37
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-python@v6` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/coverage_tests.yml"
+                },
+                "region": {
+                  "startLine": 43
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/upload-artifact@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/coverage_tests.yml"
+                },
+                "region": {
+                  "startLine": 90
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/setup-python` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/coverage_tests.yml"
+                },
+                "region": {
+                  "startLine": 43
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "excess-permissions",
+          "level": "warning",
+          "message": {
+            "text": "No `permissions:` block at workflow or job level; GITHUB_TOKEN falls back to the repository/organization default, which may grant broad read/write access to every step in every job."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/data/conda/geolibs-pg17-freethreading.yml"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "excess-permissions",
+          "level": "warning",
+          "message": {
+            "text": "No `permissions:` block at workflow or job level; GITHUB_TOKEN falls back to the repository/organization default, which may grant broad read/write access to every step in every job."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/data/conda/geolibs-pg17-gil.yml"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "excess-permissions",
+          "level": "warning",
+          "message": {
+            "text": "No `permissions:` block at workflow or job level; GITHUB_TOKEN falls back to the repository/organization default, which may grant broad read/write access to every step in every job."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/data/conda/geolibs-pg18-freethreading.yml"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "excess-permissions",
+          "level": "warning",
+          "message": {
+            "text": "No `permissions:` block at workflow or job level; GITHUB_TOKEN falls back to the repository/organization default, which may grant broad read/write access to every step in every job."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/data/conda/geolibs-pg18-gil.yml"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/docs.yml"
+                },
+                "region": {
+                  "startLine": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-python@v6` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/docs.yml"
+                },
+                "region": {
+                  "startLine": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/setup-python` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/docs.yml"
+                },
+                "region": {
+                  "startLine": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/github-script@v9` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/labels.yml"
+                },
+                "region": {
+                  "startLine": 25
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/linters.yml"
+                },
+                "region": {
+                  "startLine": 26
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-python@v6` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/linters.yml"
+                },
+                "region": {
+                  "startLine": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/linters.yml"
+                },
+                "region": {
+                  "startLine": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-python@v6` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/linters.yml"
+                },
+                "region": {
+                  "startLine": 50
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/linters.yml"
+                },
+                "region": {
+                  "startLine": 66
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`psf/black@stable` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/linters.yml"
+                },
+                "region": {
+                  "startLine": 70
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/linters.yml"
+                },
+                "region": {
+                  "startLine": 77
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/linters.yml"
+                },
+                "region": {
+                  "startLine": 91
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v6` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/linters.yml"
+                },
+                "region": {
+                  "startLine": 95
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/setup-node` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/linters.yml"
+                },
+                "region": {
+                  "startLine": 95
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/first-interaction@v1` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/new_contributor_pr.yml"
+                },
+                "region": {
+                  "startLine": 21
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/postgis.yml"
+                },
+                "region": {
+                  "startLine": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/python_matrix.yml"
+                },
+                "region": {
+                  "startLine": 25
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/python_matrix.yml"
+                },
+                "region": {
+                  "startLine": 43
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-python@v6` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/python_matrix.yml"
+                },
+                "region": {
+                  "startLine": 47
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/setup-python` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/python_matrix.yml"
+                },
+                "region": {
+                  "startLine": 47
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/schedule_tests.yml"
+                },
+                "region": {
+                  "startLine": 27
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-python@v6` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/schedule_tests.yml"
+                },
+                "region": {
+                  "startLine": 31
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/schedule_tests.yml"
+                },
+                "region": {
+                  "startLine": 48
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-python@v6` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/schedule_tests.yml"
+                },
+                "region": {
+                  "startLine": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/schedule_tests.yml"
+                },
+                "region": {
+                  "startLine": 79
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v6` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/schedule_tests.yml"
+                },
+                "region": {
+                  "startLine": 83
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/schedule_tests.yml"
+                },
+                "region": {
+                  "startLine": 99
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-python@v6` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/schedule_tests.yml"
+                },
+                "region": {
+                  "startLine": 103
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/schedule_tests.yml"
+                },
+                "region": {
+                  "startLine": 140
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-python@v6` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/schedule_tests.yml"
+                },
+                "region": {
+                  "startLine": 144
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/schedule_tests.yml"
+                },
+                "region": {
+                  "startLine": 190
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-python@v6` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/schedule_tests.yml"
+                },
+                "region": {
+                  "startLine": 194
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/github-script@v9` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/schedules.yml"
+                },
+                "region": {
+                  "startLine": 25
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/screenshots.yml"
+                },
+                "region": {
+                  "startLine": 23
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-python@v6` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/screenshots.yml"
+                },
+                "region": {
+                  "startLine": 27
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v6` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/screenshots.yml"
+                },
+                "region": {
+                  "startLine": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/upload-artifact@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/screenshots.yml"
+                },
+                "region": {
+                  "startLine": 62
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/setup-python` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/screenshots.yml"
+                },
+                "region": {
+                  "startLine": 27
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/cache` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/screenshots.yml"
+                },
+                "region": {
+                  "startLine": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/selenium.yml"
+                },
+                "region": {
+                  "startLine": 23
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-python@v6` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/selenium.yml"
+                },
+                "region": {
+                  "startLine": 27
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/selenium.yml"
+                },
+                "region": {
+                  "startLine": 65
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-python@v6` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/selenium.yml"
+                },
+                "region": {
+                  "startLine": 69
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/setup-python` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/selenium.yml"
+                },
+                "region": {
+                  "startLine": 27
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/setup-python` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/selenium.yml"
+                },
+                "region": {
+                  "startLine": 69
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/tests.yml"
+                },
+                "region": {
+                  "startLine": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-python@v6` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/tests.yml"
+                },
+                "region": {
+                  "startLine": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/tests.yml"
+                },
+                "region": {
+                  "startLine": 58
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-python@v6` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/tests.yml"
+                },
+                "region": {
+                  "startLine": 62
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/tests.yml"
+                },
+                "region": {
+                  "startLine": 81
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v6` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/tests.yml"
+                },
+                "region": {
+                  "startLine": 85
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/tests.yml"
+                },
+                "region": {
+                  "startLine": 101
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-python@v6` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/tests.yml"
+                },
+                "region": {
+                  "startLine": 105
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/setup-python` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/tests.yml"
+                },
+                "region": {
+                  "startLine": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/setup-python` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/tests.yml"
+                },
+                "region": {
+                  "startLine": 62
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/setup-node` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "django/django/.github/workflows/tests.yml"
+                },
+                "region": {
+                  "startLine": 85
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

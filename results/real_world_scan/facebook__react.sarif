@@ -1,0 +1,3704 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "cicd-vuln-scanner",
+          "version": "0.1.0",
+          "informationUri": "https://github.com/placeholder/cicd-vuln-scanner",
+          "rules": [
+            {
+              "id": "unpinned-action",
+              "shortDescription": {
+                "text": "Unpinned action"
+              }
+            },
+            {
+              "id": "cache-poisoning",
+              "shortDescription": {
+                "text": "Cache poisoning"
+              }
+            },
+            {
+              "id": "script-injection",
+              "shortDescription": {
+                "text": "Script injection"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_playground.yml"
+                },
+                "region": {
+                  "startLine": 31
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_playground.yml"
+                },
+                "region": {
+                  "startLine": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_playground.yml"
+                },
+                "region": {
+                  "startLine": 35
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_playground.yml"
+                },
+                "region": {
+                  "startLine": 50
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/upload-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_playground.yml"
+                },
+                "region": {
+                  "startLine": 61
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/cache` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_playground.yml"
+                },
+                "region": {
+                  "startLine": 35
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/cache` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_playground.yml"
+                },
+                "region": {
+                  "startLine": 50
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_prereleases.yml"
+                },
+                "region": {
+                  "startLine": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_prereleases.yml"
+                },
+                "region": {
+                  "startLine": 47
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_prereleases.yml"
+                },
+                "region": {
+                  "startLine": 50
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_rust.yml"
+                },
+                "region": {
+                  "startLine": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`dtolnay/rust-toolchain@stable` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_rust.yml"
+                },
+                "region": {
+                  "startLine": 33
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_rust.yml"
+                },
+                "region": {
+                  "startLine": 35
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_rust.yml"
+                },
+                "region": {
+                  "startLine": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_rust.yml"
+                },
+                "region": {
+                  "startLine": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/cache` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_rust.yml"
+                },
+                "region": {
+                  "startLine": 35
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/setup-node` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_rust.yml"
+                },
+                "region": {
+                  "startLine": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/cache` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_rust.yml"
+                },
+                "region": {
+                  "startLine": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_typescript.yml"
+                },
+                "region": {
+                  "startLine": 33
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_typescript.yml"
+                },
+                "region": {
+                  "startLine": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_typescript.yml"
+                },
+                "region": {
+                  "startLine": 43
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_typescript.yml"
+                },
+                "region": {
+                  "startLine": 48
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_typescript.yml"
+                },
+                "region": {
+                  "startLine": 64
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_typescript.yml"
+                },
+                "region": {
+                  "startLine": 65
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_typescript.yml"
+                },
+                "region": {
+                  "startLine": 68
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_typescript.yml"
+                },
+                "region": {
+                  "startLine": 88
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_typescript.yml"
+                },
+                "region": {
+                  "startLine": 89
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_typescript.yml"
+                },
+                "region": {
+                  "startLine": 92
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/setup-node` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_typescript.yml"
+                },
+                "region": {
+                  "startLine": 43
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/cache` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_typescript.yml"
+                },
+                "region": {
+                  "startLine": 48
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/cache` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_typescript.yml"
+                },
+                "region": {
+                  "startLine": 68
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/cache` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/compiler_typescript.yml"
+                },
+                "region": {
+                  "startLine": 92
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/devtools_regression_tests.yml"
+                },
+                "region": {
+                  "startLine": 27
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/devtools_regression_tests.yml"
+                },
+                "region": {
+                  "startLine": 28
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/devtools_regression_tests.yml"
+                },
+                "region": {
+                  "startLine": 31
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/upload-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/devtools_regression_tests.yml"
+                },
+                "region": {
+                  "startLine": 50
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/devtools_regression_tests.yml"
+                },
+                "region": {
+                  "startLine": 62
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/devtools_regression_tests.yml"
+                },
+                "region": {
+                  "startLine": 63
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/devtools_regression_tests.yml"
+                },
+                "region": {
+                  "startLine": 66
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/download-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/devtools_regression_tests.yml"
+                },
+                "region": {
+                  "startLine": 77
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/upload-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/devtools_regression_tests.yml"
+                },
+                "region": {
+                  "startLine": 87
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/upload-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/devtools_regression_tests.yml"
+                },
+                "region": {
+                  "startLine": 94
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/upload-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/devtools_regression_tests.yml"
+                },
+                "region": {
+                  "startLine": 100
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/devtools_regression_tests.yml"
+                },
+                "region": {
+                  "startLine": 122
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/devtools_regression_tests.yml"
+                },
+                "region": {
+                  "startLine": 123
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/devtools_regression_tests.yml"
+                },
+                "region": {
+                  "startLine": 126
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/download-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/devtools_regression_tests.yml"
+                },
+                "region": {
+                  "startLine": 135
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/devtools_regression_tests.yml"
+                },
+                "region": {
+                  "startLine": 156
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/devtools_regression_tests.yml"
+                },
+                "region": {
+                  "startLine": 157
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/devtools_regression_tests.yml"
+                },
+                "region": {
+                  "startLine": 160
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/download-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/devtools_regression_tests.yml"
+                },
+                "region": {
+                  "startLine": 169
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/devtools_regression_tests.yml"
+                },
+                "region": {
+                  "startLine": 176
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/upload-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/devtools_regression_tests.yml"
+                },
+                "region": {
+                  "startLine": 193
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "script-injection",
+          "level": "error",
+          "message": {
+            "text": "Untrusted github.event.pull_request.head.repo.full_name is interpolated directly into a run: command, allowing arbitrary shell/script injection from a crafted PR title, issue body, comment, or branch name."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 902
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 37
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 50
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 62
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 65
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 68
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 88
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/github-script@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 91
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 107
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 110
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache/restore@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 113
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 133
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 136
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache/restore@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 139
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 161
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 164
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache/restore@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 167
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 215
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 218
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache/restore@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 221
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 244
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 245
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache/restore@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 248
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 277
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 280
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-java@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 283
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache/restore@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 287
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/upload-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 310
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 363
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 366
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache/restore@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 369
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/download-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 383
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 408
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 411
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache/restore@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 414
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/download-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 426
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 446
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 449
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache/restore@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 452
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/download-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 464
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/upload-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 481
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/attest-build-provenance@v2` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 490
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 507
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 510
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache/restore@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 513
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/download-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 525
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 543
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 546
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache/restore@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 549
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/download-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 561
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 576
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 579
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 582
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/download-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 593
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 615
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 618
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 624
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 640
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/download-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 650
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/upload-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 664
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/upload-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 670
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 687
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 690
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache/restore@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 693
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/download-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 705
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/upload-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 717
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/upload-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 723
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/upload-artifact/merge@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 734
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 747
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 750
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache/restore@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 753
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 766
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 781
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 784
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache/restore@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 787
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/download-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 799
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache/restore@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 805
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/upload-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 814
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 826
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 829
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache/restore@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 832
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/download-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 844
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache/restore@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 850
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/upload-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 865
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 883
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 886
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 889
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/download-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 920
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/upload-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 934
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/cache` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/cache` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 68
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/cache` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 582
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/cache` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 624
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/cache` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 640
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/cache` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 766
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/cache` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_build_and_test.yml"
+                },
+                "region": {
+                  "startLine": 889
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_commit_artifacts.yml"
+                },
+                "region": {
+                  "startLine": 39
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_commit_artifacts.yml"
+                },
+                "region": {
+                  "startLine": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/upload-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_commit_artifacts.yml"
+                },
+                "region": {
+                  "startLine": 58
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_commit_artifacts.yml"
+                },
+                "region": {
+                  "startLine": 79
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_commit_artifacts.yml"
+                },
+                "region": {
+                  "startLine": 92
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_commit_artifacts.yml"
+                },
+                "region": {
+                  "startLine": 102
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/download-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_commit_artifacts.yml"
+                },
+                "region": {
+                  "startLine": 108
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/upload-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_commit_artifacts.yml"
+                },
+                "region": {
+                  "startLine": 198
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/upload-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_commit_artifacts.yml"
+                },
+                "region": {
+                  "startLine": 203
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_commit_artifacts.yml"
+                },
+                "region": {
+                  "startLine": 217
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/download-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_commit_artifacts.yml"
+                },
+                "region": {
+                  "startLine": 222
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_commit_artifacts.yml"
+                },
+                "region": {
+                  "startLine": 308
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/download-artifact@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_commit_artifacts.yml"
+                },
+                "region": {
+                  "startLine": 313
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/github-script@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_commit_artifacts.yml"
+                },
+                "region": {
+                  "startLine": 361
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_eslint_plugin_e2e.yml"
+                },
+                "region": {
+                  "startLine": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_eslint_plugin_e2e.yml"
+                },
+                "region": {
+                  "startLine": 37
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_eslint_plugin_e2e.yml"
+                },
+                "region": {
+                  "startLine": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/cache` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_eslint_plugin_e2e.yml"
+                },
+                "region": {
+                  "startLine": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4.1.0` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_fuzz_tests.yml"
+                },
+                "region": {
+                  "startLine": 20
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_fuzz_tests.yml"
+                },
+                "region": {
+                  "startLine": 21
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_release_from_ci.yml"
+                },
+                "region": {
+                  "startLine": 129
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_release_from_ci.yml"
+                },
+                "region": {
+                  "startLine": 132
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/runtime_release_from_ci.yml"
+                },
+                "region": {
+                  "startLine": 140
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/github-script@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/shared_check_maintainer.yml"
+                },
+                "region": {
+                  "startLine": 29
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/github-script@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/shared_close_direct_sync_branch_prs.yml"
+                },
+                "region": {
+                  "startLine": 23
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/github-script@v7` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/shared_label_core_team_prs.yml"
+                },
+                "region": {
+                  "startLine": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/shared_lint.yml"
+                },
+                "region": {
+                  "startLine": 24
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/shared_lint.yml"
+                },
+                "region": {
+                  "startLine": 25
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/shared_lint.yml"
+                },
+                "region": {
+                  "startLine": 28
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/shared_lint.yml"
+                },
+                "region": {
+                  "startLine": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/shared_lint.yml"
+                },
+                "region": {
+                  "startLine": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/shared_lint.yml"
+                },
+                "region": {
+                  "startLine": 49
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/shared_lint.yml"
+                },
+                "region": {
+                  "startLine": 66
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/shared_lint.yml"
+                },
+                "region": {
+                  "startLine": 67
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/shared_lint.yml"
+                },
+                "region": {
+                  "startLine": 70
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/shared_lint.yml"
+                },
+                "region": {
+                  "startLine": 87
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/setup-node@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/shared_lint.yml"
+                },
+                "region": {
+                  "startLine": 88
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/cache@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/shared_lint.yml"
+                },
+                "region": {
+                  "startLine": 91
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/cache` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/shared_lint.yml"
+                },
+                "region": {
+                  "startLine": 28
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/cache` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/shared_lint.yml"
+                },
+                "region": {
+                  "startLine": 49
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/cache` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/shared_lint.yml"
+                },
+                "region": {
+                  "startLine": 70
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/cache` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/shared_lint.yml"
+                },
+                "region": {
+                  "startLine": 91
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unpinned-action",
+          "level": "warning",
+          "message": {
+            "text": "`actions/stale@v9` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "facebook/react/.github/workflows/shared_stale.yml"
+                },
+                "region": {
+                  "startLine": 21
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

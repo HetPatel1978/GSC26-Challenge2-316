@@ -6,3 +6,4 @@ venv/
 *.egg-info/
 .env
 *.sarif
+!results/real_world_scan/*.sarif

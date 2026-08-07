@@ -1,0 +1,253 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "cicd-vuln-scanner",
+          "version": "0.1.0",
+          "informationUri": "https://github.com/placeholder/cicd-vuln-scanner",
+          "rules": [
+            {
+              "id": "cache-poisoning",
+              "shortDescription": {
+                "text": "Cache poisoning"
+              }
+            },
+            {
+              "id": "excess-permissions",
+              "shortDescription": {
+                "text": "Excess permissions"
+              }
+            },
+            {
+              "id": "self-hosted-runner-fork-trigger",
+              "shortDescription": {
+                "text": "Self hosted runner fork trigger"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/setup-node` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "microsoft/vscode/.github/workflows/chat-lib-package.yml"
+                },
+                "region": {
+                  "startLine": 28
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/cache` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "microsoft/vscode/.github/workflows/monaco-editor.yml"
+                },
+                "region": {
+                  "startLine": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cache-poisoning",
+          "level": "error",
+          "message": {
+            "text": "`actions/cache` writes to the Actions cache in a `pull_request`-triggered job; GitHub's cache restore rules let a same-branch-hierarchy base-branch run later restore an entry written by a forked PR run, letting a malicious PR poison what a privileged build later trusts."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "microsoft/vscode/.github/workflows/monaco-editor.yml"
+                },
+                "region": {
+                  "startLine": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "excess-permissions",
+          "level": "warning",
+          "message": {
+            "text": "No `permissions:` block at workflow or job level; GITHUB_TOKEN falls back to the repository/organization default, which may grant broad read/write access to every step in every job."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "microsoft/vscode/.github/workflows/pr-darwin-test.yml"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "excess-permissions",
+          "level": "warning",
+          "message": {
+            "text": "No `permissions:` block at workflow or job level; GITHUB_TOKEN falls back to the repository/organization default, which may grant broad read/write access to every step in every job."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "microsoft/vscode/.github/workflows/pr-linux-cli-test.yml"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "excess-permissions",
+          "level": "warning",
+          "message": {
+            "text": "No `permissions:` block at workflow or job level; GITHUB_TOKEN falls back to the repository/organization default, which may grant broad read/write access to every step in every job."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "microsoft/vscode/.github/workflows/pr-linux-test.yml"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "excess-permissions",
+          "level": "warning",
+          "message": {
+            "text": "No `permissions:` block at workflow or job level; GITHUB_TOKEN falls back to the repository/organization default, which may grant broad read/write access to every step in every job."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "microsoft/vscode/.github/workflows/pr-win32-test.yml"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "self-hosted-runner-fork-trigger",
+          "level": "error",
+          "message": {
+            "text": "Job `compile` runs on a self-hosted runner in a workflow triggered by `pull_request`, which a fork's pull request can trigger. Self-hosted runners are typically long-lived, non-ephemeral machines, so code that reaches one can persist state, read other jobs' data, or pivot into whatever network it sits on."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "microsoft/vscode/.github/workflows/pr.yml"
+                },
+                "region": {
+                  "startLine": 21
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "self-hosted-runner-fork-trigger",
+          "level": "error",
+          "message": {
+            "text": "Job `copilot-check-test-cache` runs on a self-hosted runner in a workflow triggered by `pull_request`, which a fork's pull request can trigger. Self-hosted runners are typically long-lived, non-ephemeral machines, so code that reaches one can persist state, read other jobs' data, or pivot into whatever network it sits on."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "microsoft/vscode/.github/workflows/pr.yml"
+                },
+                "region": {
+                  "startLine": 198
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "self-hosted-runner-fork-trigger",
+          "level": "error",
+          "message": {
+            "text": "Job `copilot-check-telemetry` runs on a self-hosted runner in a workflow triggered by `pull_request`, which a fork's pull request can trigger. Self-hosted runners are typically long-lived, non-ephemeral machines, so code that reaches one can persist state, read other jobs' data, or pivot into whatever network it sits on."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "microsoft/vscode/.github/workflows/pr.yml"
+                },
+                "region": {
+                  "startLine": 243
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "self-hosted-runner-fork-trigger",
+          "level": "error",
+          "message": {
+            "text": "Job `copilot-linux-tests` runs on a self-hosted runner in a workflow triggered by `pull_request`, which a fork's pull request can trigger. Self-hosted runners are typically long-lived, non-ephemeral machines, so code that reaches one can persist state, read other jobs' data, or pivot into whatever network it sits on."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "microsoft/vscode/.github/workflows/pr.yml"
+                },
+                "region": {
+                  "startLine": 262
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "self-hosted-runner-fork-trigger",
+          "level": "error",
+          "message": {
+            "text": "Job `copilot-windows-tests` runs on a self-hosted runner in a workflow triggered by `pull_request`, which a fork's pull request can trigger. Self-hosted runners are typically long-lived, non-ephemeral machines, so code that reaches one can persist state, read other jobs' data, or pivot into whatever network it sits on."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "microsoft/vscode/.github/workflows/pr.yml"
+                },
+                "region": {
+                  "startLine": 356
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
