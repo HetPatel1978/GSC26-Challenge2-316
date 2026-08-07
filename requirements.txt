@@ -6,3 +6,8 @@ pandas>=2.2
 matplotlib>=3.9
 requests>=2.32
 PyGithub>=2.4
+
+# semgrep is deliberately NOT listed here: installing it alongside these
+# pins pulled in opentelemetry-*/click/mcp version bumps that conflicted
+# with unrelated tooling during development. See baselines/run_semgrep.py
+# for the isolated-venv install it expects instead.
