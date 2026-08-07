@@ -1,0 +1,20 @@
+name: Legacy Deploy Preview
+on:
+  pull_request_target:
+    types: [opened, synchronize]
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Install and build
+        run: |
+          npm ci
+          npm run build
+      - name: Deploy over FTP
+        run: |
+          echo "Using deploy key: ${{ secrets.FTP_PASSWORD }}"
+          curl -T dist.zip "ftp://deploy.example.com/" --user "deployer:${{ secrets.FTP_PASSWORD }}"

@@ -1,0 +1,29 @@
+name: Build Preview
+on:
+  pull_request_target:
+    types: [opened, synchronize]
+permissions:
+  contents: read
+  pull-requests: write
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Install dependencies
+        run: npm ci
+      - name: Build preview
+        run: npm run build
+      - name: Comment preview link
+        uses: actions/github-script@a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Preview deployed!'
+            })

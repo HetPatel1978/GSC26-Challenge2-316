@@ -1,0 +1,31 @@
+name: Build and Push Docker Image
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+permissions:
+  contents: read
+  packages: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
+      - name: Log in to GHCR
+        uses: docker/login-action@a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
+        with:
+          images: ghcr.io/${{ github.repository }}
+      - name: Build and push
+        uses: docker/build-push-action@a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}

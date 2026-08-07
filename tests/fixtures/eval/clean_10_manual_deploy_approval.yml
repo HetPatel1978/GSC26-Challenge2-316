@@ -1,0 +1,23 @@
+name: Deploy to Production
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version tag to deploy'
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  deploy:
+    runs-on: [self-hosted, linux, production]
+    environment:
+      name: production
+    steps:
+      - uses: actions/checkout@a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
+        with:
+          ref: ${{ inputs.version }}
+      - name: Deploy
+        run: ./scripts/deploy.sh
+        env:
+          DEPLOY_KEY: ${{ secrets.PRODUCTION_DEPLOY_KEY }}

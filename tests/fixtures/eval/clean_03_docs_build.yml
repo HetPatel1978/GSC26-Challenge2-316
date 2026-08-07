@@ -1,0 +1,33 @@
+name: Deploy Docs
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
+      - uses: actions/setup-python@a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
+        with:
+          python-version: '3.12'
+      - run: pip install mkdocs mkdocs-material
+      - run: mkdocs build --strict
+      - uses: actions/upload-pages-artifact@a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
+        with:
+          path: site/
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@a94a8fe5ccb19ba61c4c0873d391e987982fbbd3

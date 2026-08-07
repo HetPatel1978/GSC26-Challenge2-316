@@ -1,0 +1,24 @@
+name: Slash Command Handler
+on:
+  issue_comment:
+    types: [created]
+permissions:
+  pull-requests: write
+jobs:
+  handle-command:
+    if: github.event.issue.pull_request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Parse and run command
+        uses: actions/github-script@a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
+        with:
+          script: |
+            const comment = "${{ github.event.comment.body }}";
+            console.log("Handling command: " + comment);
+            if (comment.startsWith('/deploy')) {
+              await github.rest.repos.createDispatchEvent({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                event_type: 'deploy'
+              });
+            }

@@ -1,0 +1,12 @@
+name: Integration Tests
+on:
+  pull_request_target:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  integration:
+    runs-on: [self-hosted, linux, gpu]
+    steps:
+      - uses: actions/checkout@a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
+      - run: ./run-integration-tests.sh

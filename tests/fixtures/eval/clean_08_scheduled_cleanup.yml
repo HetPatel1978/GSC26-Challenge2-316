@@ -1,0 +1,17 @@
+name: Close Stale Issues
+on:
+  schedule:
+    - cron: '0 3 * * *'
+permissions:
+  issues: write
+  pull-requests: write
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
+        with:
+          days-before-stale: 60
+          days-before-close: 14
+          stale-issue-message: 'This issue has been automatically marked as stale.'
+          stale-pr-message: 'This PR has been automatically marked as stale.'

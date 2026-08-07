@@ -1,0 +1,20 @@
+name: Node Tests
+on:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
+      - uses: actions/setup-node@a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
+        with:
+          node-version: '20'
+      - name: Cache node_modules
+        uses: actions/cache@a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
+        with:
+          path: node_modules
+          key: node-modules-${{ github.head_ref }}
+      - run: npm ci
+      - run: npm test

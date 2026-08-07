@@ -1,0 +1,22 @@
+{
+  "vuln_01_script_injection.yml": ["script_injection"],
+  "vuln_02_pull_request_target.yml": ["pull_request_target"],
+  "vuln_03_excess_permissions.yml": ["excess_permissions"],
+  "vuln_04_secret_leakage.yml": ["secret_leakage"],
+  "vuln_05_unpinned_action.yml": ["unpinned_action"],
+  "vuln_06_dependency_confusion.yml": ["dependency_confusion"],
+  "vuln_07_cache_poisoning.yml": ["cache_poisoning"],
+  "vuln_08_self_hosted_runner.yml": ["self_hosted_runner"],
+  "vuln_09_script_injection_github_script.yml": ["script_injection"],
+  "vuln_10_multi_category.yml": ["pull_request_target", "excess_permissions", "secret_leakage"],
+  "clean_01_lint.yml": [],
+  "clean_02_matrix_tests.yml": [],
+  "clean_03_docs_build.yml": [],
+  "clean_04_release_oidc.yml": [],
+  "clean_05_dependabot_automerge.yml": [],
+  "clean_06_docker_build_ghcr.yml": [],
+  "clean_07_reusable_workflow.yml": [],
+  "clean_08_scheduled_cleanup.yml": [],
+  "clean_09_codeql_analysis.yml": [],
+  "clean_10_manual_deploy_approval.yml": []
+}

@@ -1,0 +1,17 @@
+name: Install Internal Packages
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
+      - uses: actions/setup-python@a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
+        with:
+          python-version: '3.12'
+      - name: Install internal + public deps
+        run: |
+          pip install internal-widget-lib --extra-index-url https://pypi.internal.example.com/simple
+          pip install requests pyyaml
