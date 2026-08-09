@@ -70,6 +70,7 @@ scanner/detectors/
 eval/metrics.py              Precision/recall/F1 harness against tests/fixtures/eval/
 baselines/run_semgrep.py     Same harness run against semgrep's p/github-actions ruleset
 scripts/scan_real_repos.py   Scans 10 popular public repos, writes results/real_world_scan/
+scripts/compare_real_world_semgrep.py  Semgrep vs. us on those same 10 repos
 docs/REAL_WORLD_FINDINGS.md  Deep dives on the interesting real findings above
 results/                     Generated output: SARIF, eval report, semgrep comparison
 ```
@@ -253,6 +254,44 @@ primitives behind real incidents: [CVE-2025-30066](https://github.com/advisories
 Angular's CI in March 2024](https://adnanthekhan.com/2024/05/06/the-monsters-in-your-build-cache-github-actions-cache-poisoning/),
 respectively — see `taxonomy.md` for the full incident references.
 
+### Semgrep vs. this scanner, on the same 10 real repos
+
+`results/semgrep_comparison.md` (below) scores both tools against 20
+fixtures this project wrote itself — useful, but self-graded, and a
+skeptical reviewer should discount it accordingly. `scripts/compare_real_world_semgrep.py`
+instead runs both tools against the identical clones of the same ten real
+repositories above, where neither tool's rules had any influence on what
+the code looks like. There's no labeled ground truth on real code, so
+this reports raw counts and *where the two tools structurally disagree*,
+not precision/recall.
+
+| Category | Ours | Semgrep |
+|---|---|---|
+| script_injection | 1 | 31 |
+| pull_request_target | 0 | 0 |
+| excess_permissions | 8 | 0 |
+| secret_leakage | 3 | 88 |
+| unpinned_action | 230 | 230 |
+| dependency_confusion | 0 | 0 |
+| cache_poisoning | 46 | 0 |
+| self_hosted_runner | 5 | 0 |
+
+Semgrep structurally can't score on 4 of these 8 categories (no rule
+exists at all). On the 4 it does attempt, reading the actual
+disagreements by hand in
+[`results/semgrep_real_world_comparison.md`](results/semgrep_real_world_comparison.md)
+surfaced two **real gaps in this project's own coverage** — semgrep
+catches `secrets: inherit` in reusable workflow calls (13 hits in
+electron/electron alone) and secrets placed in a workflow-level `env:`
+block (apache/airflow), neither of which any of the 8 detectors here
+check for — and one case where **this scanner is arguably more precise**:
+semgrep flags `workflow_dispatch` inputs as tainted the same as PR/issue
+text, even though dispatch inputs require write access to populate and
+this project's taint allowlist (correctly, if by omission rather than
+documented design) doesn't treat them as attacker-controlled. All four
+are read in full, with exact file/line, in the report — this is the
+comparison worth trusting over the self-graded one below.
+
 ## Evaluation
 
 Two independent measurements, kept deliberately separate because they
@@ -273,7 +312,10 @@ answer different questions:
   `self_hosted_runner`) and a `secret_leakage` rule that exists but
   doesn't match the direct "secret interpolated into `run:`" pattern —
   0.42 recall vs. this project's 1.00 on the shared fixture set, both at
-  1.00 precision (neither tool false-positives here).
+  1.00 precision (neither tool false-positives here). Self-graded, same
+  as the eval report above — see [Semgrep vs. this scanner, on the same
+  10 real repos](#semgrep-vs-this-scanner-on-the-same-10-real-repos) for
+  the version scored on code neither tool influenced.
 
 ## Tests
 
