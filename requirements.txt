@@ -1,13 +1,15 @@
 pyyaml>=6.0
 ruamel.yaml>=0.18
-anthropic>=0.40
 pytest>=8.0
-pandas>=2.2
-matplotlib>=3.9
 requests>=2.32
-PyGithub>=2.4
 
-# semgrep is deliberately NOT listed here: installing it alongside these
-# pins pulled in opentelemetry-*/click/mcp version bumps that conflicted
-# with unrelated tooling during development. See baselines/run_semgrep.py
-# for the isolated-venv install it expects instead.
+# anthropic, pandas, matplotlib, and PyGithub were removed (2026-08-08):
+# they existed only for patcher/'s and collect/'s not-yet-implemented
+# LLM-patching/corpus-collection scaffolding and were never imported by
+# anything that actually runs. Re-add them if/when that scaffolding is
+# implemented, not before.
+#
+# semgrep is deliberately NOT listed here either: installing it alongside
+# these pins pulled in opentelemetry-*/click/mcp version bumps that
+# conflicted with unrelated tooling during development. See
+# baselines/run_semgrep.py for the isolated-venv install it expects instead.
