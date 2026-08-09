@@ -184,6 +184,38 @@ the content-hash-free cache key matter, and a real gap this exposed in
 the `predictable-cache-key` sub-rule — is in
 [`docs/REAL_WORLD_FINDINGS.md`](docs/REAL_WORLD_FINDINGS.md#5-djangodjango----cache-poisoning-with-a-maximally-predictable-key).
 
+## Dogfooding
+
+This project has its own CI workflow at
+[`.github/workflows/ci.yml`](.github/workflows/ci.yml), which runs the
+full `pytest` suite on every push. We ran our own scanner against that
+exact file the moment it was written — unedited output:
+
+```
+$ python -m scanner.cli .github/workflows/ci.yml --fail-on none
+
+2 finding(s): 2 medium
+
+== .github\workflows\ci.yml ==
+  [MEDIUM] unpinned-action @ line 18
+    `actions/checkout@v4` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to.
+    context: jobs.test.steps[0].uses
+    fix: Pin the action to a full commit SHA instead of a mutable tag.
+  [MEDIUM] unpinned-action @ line 19
+    `actions/setup-python@v5` is pinned to a mutable ref, not a commit SHA -- whoever controls that tag or branch can repoint it to different content at any time, and the next run of this workflow executes whatever it now resolves to.
+    context: jobs.test.steps[1].uses
+    fix: Pin the action to a full commit SHA instead of a mutable tag.
+```
+
+Deliberately not scrubbed to look clean: `ci.yml` uses `actions/checkout@v4`
+and `actions/setup-python@v5` by tag, like the overwhelming majority of
+real workflows do (see the 230 identical findings across django and react
+in Real-world results below), so the scanner correctly flags its own CI
+the same way it flags anyone else's. No `pull_request_target`, no
+secrets, explicit `permissions: contents: read` — the two medium findings
+here are real, honest, and exactly what running this tool on itself
+should produce.
+
 ## Real-world results
 
 `scripts/scan_real_repos.py` shallow/sparse-clones ten popular, actively
